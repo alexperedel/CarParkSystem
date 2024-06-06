@@ -7,3 +7,7 @@ class Display:
 
     def __str__(self):
         return f"ID: {self.id}, Message: {self}"
+
+    def update(self, data):
+        for key, value in data.items():
+            print(f"{key}: {value}")

@@ -368,12 +368,17 @@ You may want to see the number of available bays, the current temperature, and t
 
 Now consider, between the `CarPark`, `Sensor`, and `Display` classes, which class is responsible for each piece of information? There's no right or wrong answer here. But you should be able to justify your answer.
 
->Q. Which class is responsible for the number of available bays (and why)?
->
->Q. Which class is responsible for the current temperature (and why)?
->
+>Q. Which class is responsible for the number of available bays (and why)? 
+> 
+> This information should be managed and updated by the CarPark class since it directly relates to the state of the car park's occupancy.
+> 
+> Q. Which class is responsible for the current temperature (and why)?
+> 
+> This information would likely be provided by a Display class. It could be a separate temperature method. Temperature monitoring is typically an environmental parameter and not directly tied to the car park's occupancy status. It's more about providing additional environmental context to the users.
+> 
 >Q. Which class is responsible for the time (and why)?
->
+> 
+> This information would likely be provided by a Display class too. Time parameter isn't directly tied to the car park's parameters. It's more about providing additional information to the users. 
 --------
 
 ##### Detour: implement available bays
