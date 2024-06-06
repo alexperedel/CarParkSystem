@@ -445,26 +445,26 @@ This time, we will push the tag to the remote repository:
 
 Add a screenshot of the GitHub repository after pushing the tag, showing the CarPark class with the new methods:
 
-```markdown
-![Added methods to the car park class](images/methods-to-car-park.png)
-```
+
+![Added methods to the car park class](images/car_park_methods.png)
+
 
 Answer the following questions:
 > **Review Questions**
 >
 > 1. **Which class is responsible for each of the following pieces of information (and why)?**
 >    - _The number of available bays_  
->      `Answer here...`
+>      `car_park because we have @property method in this class`
 >    - _The current temperature_  
->      `Answer here...`
+>      `car_park because pass this parametr from update_displays methos to Display class`
 >    - _The time_  
->      `Answer here...`
+>      `car_park because pass this parametr from update_displays methos to Display class`
 >
 > 2. **What is the difference between an attribute and a property?**  
->    `Answer here...`
+>    `With a property you can complete control on its getter, setter and deleter methods, which you don't have with an attribute.`
 >
 > 3. **Why do you think we used a dictionary to hold the data we passed the display? List at least one advantage and one disadvantage of this approach.**  
->    `Answer here...`
+>    `Advantages: it's easier to find specific information by key names and dictionary search is faster. Disadvantages: Dictionaries in Python are unordered collections, meaning there's no inherent ordering of elements`
 
 #### Add a detect vehicle method to the Sensor class
 

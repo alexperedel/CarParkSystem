@@ -1,5 +1,6 @@
 from sensor import Sensor
 from display import Display
+from datetime import datetime
 
 
 class CarPark:
@@ -37,7 +38,9 @@ class CarPark:
             return self.capacity - len(self.plates)
 
     def update_displays(self):
-        data = {"available_bays": self.available_bays, "temperature": 25}
-        for display in self.displays: 
+        now = datetime.now()
+        current_time = now.strftime("%H:%M")
+        data = {"available_bays": self.available_bays, "temperature": 25, "time": current_time}
+        for display in self.displays:
             display.update(data)
 
