@@ -1,6 +1,7 @@
-from sensor import Sensor
-from display import Display
 from datetime import datetime
+
+from src.display import Display
+from src.sensor import Sensor
 
 
 class CarPark:

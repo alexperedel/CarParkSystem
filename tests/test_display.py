@@ -1,6 +1,7 @@
 import unittest
-from display import Display
-from car_park import CarPark
+from src.display import Display
+from src.car_park import CarPark
+
 
 class TestDisplay(unittest.TestCase):
     def setUp(self):
