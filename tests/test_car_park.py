@@ -6,7 +6,8 @@ from src.car_park import CarPark
 class TestCarPark(unittest.TestCase):
     def setUp(self):
         self.log_file = "log.txt"
-        self.car_park = CarPark("123 Example Street", 100, log_file=self.log_file)
+        self.config_file = "config.json"
+        self.car_park = CarPark("123 Example Street", 100, log_file=self.log_file, config_file=self.config_file)
 
     def test_car_park_initialized_with_all_attributes(self):
         self.assertIsInstance(self.car_park, CarPark)
@@ -17,6 +18,7 @@ class TestCarPark(unittest.TestCase):
         self.assertEqual(self.car_park.displays, [])
         self.assertEqual(self.car_park.available_bays, 100)
         self.assertEqual(self.car_park.log_file, Path("log.txt"))
+        self.assertEqual(self.car_park.config_file, Path("config.json"))
 
     def test_add_car(self):
         self.car_park.add_car("FAKE-001")
@@ -75,6 +77,15 @@ class TestCarPark(unittest.TestCase):
         self.assertIn("NEW-001", last_line)  # check plate entered
         self.assertIn("exited", last_line)  # check description
         self.assertIn("\n", last_line)  # check entry has a new line
+
+    def test_save_and_load_config(self):
+        self.car_park.write_config()
+
+        loaded_car_park = CarPark.from_config(self.config_file)
+        self.assertEqual(loaded_car_park.location, self.car_park.location)
+        self.assertEqual(loaded_car_park.capacity, self.car_park.capacity)
+        self.assertEqual(loaded_car_park.log_file, Path("log.txt"))
+        self.assertEqual(loaded_car_park.config_file, Path("config.json"))
 
 
 if __name__ == "__main__":
