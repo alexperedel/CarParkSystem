@@ -1,12 +1,13 @@
 import json
 from datetime import datetime
 from pathlib import Path
-from src.display import Display
-from src.sensor import Sensor
+from display import Display
+from sensor import Sensor
 
 
 class CarPark:
-    def __init__(self, location, capacity, plates=None, sensors=None, displays=None, log_file=Path("log.txt"), config_file=Path("config.json")):
+    def __init__(self, location, capacity, plates=None, sensors=None, displays=None, log_file=Path("log.txt"),
+                 config_file=Path("config.json")):
         self.location = location
         self.capacity = capacity
         self.plates = plates or []
@@ -15,17 +16,18 @@ class CarPark:
         self.log_file = log_file if isinstance(log_file, Path) else Path(log_file)
         self.config_file = config_file if isinstance(config_file, Path) else Path(config_file)
         self.log_file.touch(exist_ok=True)
+        self.write_config()
 
     def __str__(self):
         return f"Location: {self.location}, Capacity: {self}"
 
-    def register(self,component):
-        if not isinstance(component, (Sensor, Display)):
-            raise TypeError("Object must be a Sensor or Display")
+    def register(self, component):
         if isinstance(component, Sensor):
             self.sensors.append(component)
         elif isinstance(component, Display):
             self.displays.append(component)
+        if not isinstance(component, (Sensor, Display)):
+            raise TypeError("Object must be a Sensor or Display")
 
     def add_car(self, plate):
         self.plates.append(plate)
@@ -56,10 +58,10 @@ class CarPark:
             f.write(f"{plate} {action} at {datetime.now():%Y-%m-%d %H:%M:%S}\n")
 
     def write_config(self):
-        with open(self.config_file, "w") as f: # TODO: use self.config_file; use Path; add optional parm to __init__
+        with open(self.config_file, "w") as f:
             json.dump({"location": self.location,
-                           "capacity": self.capacity,
-                           "log_file": str(self.log_file)}, f)
+                       "capacity": self.capacity,
+                       "log_file": str(self.log_file)}, f)
 
     @classmethod
     def from_config(cls, config_file=Path("config.json")):
