@@ -1093,6 +1093,10 @@ In your final submission, you must include any files you created or modified. Th
 
    ![Publish a release](images/project_is_released.png)
 
+   ![.git screenshots](images/git-screenshot.png)
+
+   ![.git screenshots](images/release-v1.png)
+
 
 5. Congratulations! You have completed the project. You can now submit the assignment via Blackboard. Take the time to reflect on your work and write any notes and observations down.
 
